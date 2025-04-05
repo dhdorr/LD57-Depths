@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://rxkyxiyxkq0x"]
+
+[ext_resource type="Script" uid="uid://cw8vx34ocoss8" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brd3p"]
+radius = 30.0
+
+[node name="Player" type="Node2D"]
+z_index = -1
+script = ExtResource("1_v0iea")
+
+[node name="CameraMarker" type="Marker2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraMarker"]
+drag_top_margin = 0.8
+drag_bottom_margin = 0.9
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(8, 5)
+scale = Vector2(1, 1.10465)
+polygon = PackedVector2Array(-37, -58, -45, -39, -45, 12, -38, 22, -30, 22, -25, 11, -25, -21, -24, 16, -20, 26, -11, 26, -8, 16, -8, -23, -7, 19, -4, 28, 4, 28, 8, 19, 7, -24, 11, -21, 12, 2, 19, 10, 28, 10, 33, 2, 32, -38, 21, -57)
+
+[node name="PickerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickerArea"]
+shape = SubResource("CircleShape2D_brd3p")

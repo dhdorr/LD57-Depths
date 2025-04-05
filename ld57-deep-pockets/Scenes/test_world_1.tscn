@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://s6cm15bs64ts"]
+[gd_scene load_steps=6 format=3 uid="uid://s6cm15bs64ts"]
 
 [ext_resource type="PackedScene" uid="uid://lpiibsn5rwvf" path="res://Scenes/pickable_object.tscn" id="1_n11vw"]
 [ext_resource type="Script" uid="uid://ddjn4jbqo4lib" path="res://Scripts/ui.gd" id="2_n11vw"]
 [ext_resource type="PackedScene" uid="uid://bypm6yvavsty5" path="res://Scenes/long_pickable_object.tscn" id="4_lilgb"]
+[ext_resource type="PackedScene" uid="uid://rxkyxiyxkq0x" path="res://Scenes/player.tscn" id="4_t5ryf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jveei"]
 size = Vector2(40, 40)
@@ -56,6 +57,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_n11vw")
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
 layout_mode = 0
@@ -64,6 +66,10 @@ offset_top = 37.0
 offset_right = 375.0
 offset_bottom = 64.0
 value = 100.0
+metadata/_edit_use_anchors_ = true
 
 [node name="RigidBody2D4" parent="." instance=ExtResource("4_lilgb")]
 position = Vector2(690, 481)
+
+[node name="Player" parent="." instance=ExtResource("4_t5ryf")]
+position = Vector2(575, 324)
