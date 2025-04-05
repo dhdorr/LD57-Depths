@@ -16,9 +16,14 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func _physics_process(delta: float) -> void:
 	if StateGrabbed:
 		var test = self.position.distance_to(get_viewport().get_mouse_position())
-		print(test)
+		
 		if self.position.distance_to(get_viewport().get_mouse_position()) > 1.5:
 			self.move_and_collide(self.position.direction_to(get_viewport().get_mouse_position()) * 2)
+		else:
+			var collision = self.move_and_collide(self.position.direction_to(get_viewport().get_mouse_position()) * 2, true)
+			if not collision:
+				print(test)
+				self.position = get_viewport().get_mouse_position()
 	
 
 func _input(event: InputEvent) -> void:
