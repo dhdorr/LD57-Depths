@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bypm6yvavsty5"]
+
+[ext_resource type="Script" uid="uid://dpueh5ilfxfld" path="res://Scripts/pickable.gd" id="1_2hfre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hfre"]
+size = Vector2(405, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5j0u"]
+size = Vector2(405, 20)
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["obj"]]
+mass = 1000.0
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_2hfre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_2hfre")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-2, -10, 203, -9, 203, 10, 0, 12, -202, 9, -201, -9)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_v5j0u")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -12.0
+offset_right = 21.0
+offset_bottom = 11.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

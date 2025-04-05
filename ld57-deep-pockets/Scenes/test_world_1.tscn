@@ -1,9 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://s6cm15bs64ts"]
+[gd_scene load_steps=5 format=3 uid="uid://s6cm15bs64ts"]
 
-[ext_resource type="Script" uid="uid://dpueh5ilfxfld" path="res://Scripts/pickable.gd" id="1_jveei"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u8f86"]
-radius = 25.0
+[ext_resource type="PackedScene" uid="uid://lpiibsn5rwvf" path="res://Scenes/pickable_object.tscn" id="1_n11vw"]
+[ext_resource type="Script" uid="uid://ddjn4jbqo4lib" path="res://Scripts/ui.gd" id="2_n11vw"]
+[ext_resource type="PackedScene" uid="uid://bypm6yvavsty5" path="res://Scenes/long_pickable_object.tscn" id="4_lilgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jveei"]
 size = Vector2(40, 40)
@@ -19,55 +18,12 @@ polygon = PackedVector2Array(355, 504, 404, 621, 778, 621, 844, 502, 844, 648, 3
 color = Color(0.219608, 0.219608, 0.678431, 1)
 polygon = PackedVector2Array(354, 504, 404, 620, 777, 621, 844, 502, 844, 648, 349, 647)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["obj"]]
-position = Vector2(442, 593)
-mass = 500.0
-contact_monitor = true
-max_contacts_reported = 4
-script = ExtResource("1_jveei")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_u8f86")
-
-[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D"]
-polygon = PackedVector2Array(-1, -25, 22, -13, 22, 11, 4, 25, -21, 13, -22, -13)
-
-[node name="Area2D" type="Area2D" parent="RigidBody2D"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
-shape = SubResource("CircleShape2D_u8f86")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="." groups=["obj"]]
-position = Vector2(463, 534)
-mass = 250.0
-contact_monitor = true
-max_contacts_reported = 4
-script = ExtResource("1_jveei")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-shape = SubResource("CircleShape2D_u8f86")
-
-[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D3"]
-polygon = PackedVector2Array(-1, -25, 22, -13, 22, 11, 4, 25, -21, 13, -22, -13)
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="." groups=["obj"]]
-position = Vector2(399, 523)
-mass = 50.0
-contact_monitor = true
-max_contacts_reported = 4
-script = ExtResource("1_jveei")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
-shape = SubResource("CircleShape2D_u8f86")
-
-[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D4"]
-polygon = PackedVector2Array(-1, -25, 22, -13, 22, 11, 4, 25, -21, 13, -22, -13)
+[node name="RigidBody2D" parent="." instance=ExtResource("1_n11vw")]
+position = Vector2(425, 509)
+mass = 100.0
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(520, 597)
+position = Vector2(663, 596)
 mass = 800.0
 metadata/_edit_group_ = true
 
@@ -78,5 +34,36 @@ shape = SubResource("RectangleShape2D_jveei")
 color = Color(0.712367, 0.135714, 0.346475, 1)
 polygon = PackedVector2Array(-20, -20, 20, -20, 20, 19, -20, 19)
 
-[connection signal="input_event" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_area_2d_mouse_entered"]
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(659, 552)
+mass = 800.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource("RectangleShape2D_jveei")
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D5"]
+color = Color(0.712367, 0.135714, 0.346475, 1)
+polygon = PackedVector2Array(-20, -20, 20, -20, 20, 19, -20, 19)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("1_n11vw")]
+position = Vector2(739, 554)
+mass = 50.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n11vw")
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 37.0
+offset_right = 375.0
+offset_bottom = 64.0
+value = 100.0
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("4_lilgb")]
+position = Vector2(690, 481)
