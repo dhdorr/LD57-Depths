@@ -6,11 +6,16 @@
 radius = 25.0
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["obj"]]
-mass = 500.0
+mass = 200.0
 contact_monitor = true
 max_contacts_reported = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 10)
+shape = SubResource("CircleShape2D_u8f86")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-21, 23)
 shape = SubResource("CircleShape2D_u8f86")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

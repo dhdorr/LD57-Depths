@@ -8,10 +8,11 @@ extends CharacterBody2D
 var PickedBody : RigidBody2D
 var IsGrabbing = false
 #var velocity := Vector2.ZERO
-var max_speed := 300
+var max_speed := 200
 
 
 func _ready() -> void:
+	SignalBus.do_tired.connect(DoTired)
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#InputEventMouseMotion.relative
 	var v_siz = get_viewport_rect().size
@@ -33,25 +34,30 @@ func _physics_process(delta: float) -> void:
 	#var dir := adjusted_m_pos.direction_to(picker_area.position)
 	var dir := -mouse_slowdown_area.position.direction_to(adjusted_m_pos)
 	
-	if IsGrabbing:
-		if PickedBody.global_position.y > PickedBody.global_position.y + 70:
+	if dist < 70:
+		max_speed = 0
+	else:
+		max_speed = 200
+	
+	if IsGrabbing and PickedBody != null:
+		if self.global_position.y > PickedBody.global_position.y + 70:
 			if dir.y < 0:
-				max_speed = 300
+				max_speed = 200
 			else:
 				max_speed = 0
-		elif PickedBody.global_position.y < PickedBody.global_position.y - 70:
+		elif self.global_position.y < PickedBody.global_position.y - 70:
 			if dir.y > 0:
-				max_speed = 300
+				max_speed = 200
 			else:
 				max_speed = 0
-		if PickedBody.global_position.x > PickedBody.global_position.x + 70:
+		if self.global_position.x > PickedBody.global_position.x + 70:
 			if dir.x < 0:
-				max_speed = 300
+				max_speed = 200
 			else:
 				max_speed = 0
-		elif PickedBody.global_position.x < PickedBody.global_position.x - 70:
+		elif self.global_position.x < PickedBody.global_position.x - 70:
 			if dir.x > 0:
-				max_speed = 300
+				max_speed = 200
 			else:
 				max_speed = 0
 	
@@ -63,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-	if IsGrabbing:
+	if IsGrabbing and PickedBody != null:
 		var bdir := PickedBody.global_position.direction_to(picker_area.global_position)
 		var bdist := PickedBody.global_position.distance_to(picker_area.global_position)
 		var bdist2 := PickedBody.global_position.distance_squared_to(picker_area.global_position)
@@ -92,14 +98,16 @@ func _input(event: InputEvent) -> void:
 				PickedBody.gravity_scale = 0
 				break
 	if event.is_action_released("grab"):
-		animation_player.play("HandGrab", -1, -1.0, true)
-		IsGrabbing = false
-		if PickedBody == null:
-			return
-		PickedBody.gravity_scale = 1
-		PickedBody.apply_central_impulse(PickedBody.linear_velocity * 100 * get_process_delta_time())
+		DoTired()
 		#PickedBody.reparent(get_tree().root)
 
+func DoTired() -> void:
+	animation_player.play("HandGrab", -1, -1.0, true)
+	IsGrabbing = false
+	if PickedBody == null:
+		return
+	PickedBody.gravity_scale = 1
+	PickedBody.apply_central_impulse(PickedBody.linear_velocity * 100 * get_process_delta_time())
 
 func _on_mouse_slowdown_area_mouse_entered() -> void:
 	max_speed = 0

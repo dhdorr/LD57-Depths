@@ -1,17 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cctv0g5q1ca2t"]
+[gd_scene load_steps=2 format=3 uid="uid://cctv0g5q1ca2t"]
 
 [ext_resource type="Texture2D" uid="uid://d3n7jbmiypr0t" path="res://Assets/candy-sprites-sheet.png" id="1_260kc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u8f86"]
-radius = 25.0
-
 [node name="RigidBody2D" type="RigidBody2D" groups=["obj"]]
-mass = 500.0
+mass = 250.0
 contact_monitor = true
 max_contacts_reported = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_u8f86")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-1, -25, 22, -13, 22, 11, 4, 25, -21, 13, -22, -13)
@@ -33,3 +27,6 @@ texture = ExtResource("1_260kc")
 hframes = 2
 vframes = 2
 frame = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-29, 39, 29, 39, 36, 15, -2, -35, -19, -40, -10, -25, -36, 18)

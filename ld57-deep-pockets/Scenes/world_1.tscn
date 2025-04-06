@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dv4gpqcijehjb"]
+[gd_scene load_steps=19 format=3 uid="uid://dv4gpqcijehjb"]
 
 [ext_resource type="Texture2D" uid="uid://wondxk4btw60" path="res://Assets/pants-bg-1.png" id="1_12jk7"]
 [ext_resource type="PackedScene" uid="uid://rxkyxiyxkq0x" path="res://Scenes/player.tscn" id="1_brd3p"]
+[ext_resource type="Script" uid="uid://c0542ww8wsnlq" path="res://Scripts/world.gd" id="1_ise5x"]
 [ext_resource type="PackedScene" uid="uid://bypm6yvavsty5" path="res://Scenes/long_pickable_object.tscn" id="4_12jk7"]
 [ext_resource type="PackedScene" uid="uid://b4j8wrucht84n" path="res://Scenes/goal.tscn" id="4_d4kua"]
 [ext_resource type="PackedScene" uid="uid://dm74d47wqabwv" path="res://Scenes/cherry-candy.tscn" id="6_h3pls"]
@@ -11,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ddrwdqma1x5wf" path="res://Scenes/phone.tscn" id="10_28bhr"]
 [ext_resource type="Texture2D" uid="uid://cbvrucvhg6u27" path="res://Assets/arrow-1-Sheet.png" id="10_brl3g"]
 [ext_resource type="Script" uid="uid://1pwr81y7a83p" path="res://Scripts/arrow.gd" id="11_brl3g"]
+[ext_resource type="PackedScene" uid="uid://d3ntlv3qe8q2h" path="res://Scenes/stamina_orb.tscn" id="12_24lvx"]
+[ext_resource type="PackedScene" uid="uid://cn6bmdonjir36" path="res://Scenes/start_screen.tscn" id="14_sg8p1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12jk7"]
 size = Vector2(20, 228)
@@ -54,6 +57,7 @@ _data = {
 }
 
 [node name="World_1" type="Node2D"]
+script = ExtResource("1_ise5x")
 
 [node name="Pants-bg-1" type="Sprite2D" parent="."]
 z_index = -1
@@ -63,6 +67,7 @@ scale = Vector2(16, 13.807)
 texture = ExtResource("1_12jk7")
 
 [node name="Player" parent="." instance=ExtResource("1_brd3p")]
+visible = false
 z_index = 100
 position = Vector2(0, -169)
 
@@ -103,17 +108,19 @@ position = Vector2(-182, -156)
 position = Vector2(219, 9)
 
 [node name="RigidBody2D7" parent="." groups=["token"] instance=ExtResource("8_brl3g")]
-position = Vector2(-73, 392)
+position = Vector2(-221, 1153)
+mass = 250.0
 
 [node name="RigidBody2D8" parent="." instance=ExtResource("9_24lvx")]
 position = Vector2(129, -252)
 
 [node name="RigidBody2D9" parent="." instance=ExtResource("10_28bhr")]
-position = Vector2(227, 615)
+position = Vector2(186, 773)
+rotation = 0.326401
 
 [node name="Arrow-1-sheet" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1, 297)
+position = Vector2(-5.96046e-08, 260)
 scale = Vector2(5, 5)
 texture = ExtResource("10_brl3g")
 hframes = 5
@@ -124,3 +131,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_ise5x")
 }
 autoplay = "arrow"
+
+[node name="StaminaOrb" parent="." instance=ExtResource("12_24lvx")]
+position = Vector2(0, 507)
+
+[node name="StartScreen" parent="." instance=ExtResource("14_sg8p1")]
+position = Vector2(-576, -482)

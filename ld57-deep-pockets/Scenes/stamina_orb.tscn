@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3ntlv3qe8q2h"]
+
+[ext_resource type="Script" uid="uid://db44krr7hbq6f" path="res://Scripts/stamina_orb.gd" id="1_6kgqa"]
+[ext_resource type="Texture2D" uid="uid://caqtnksx1aq0l" path="res://Assets/stam-orb-1.png" id="1_ifhvy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m75jk"]
+radius = 30.0
+
+[node name="StaminaOrb" type="Node2D"]
+script = ExtResource("1_6kgqa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_m75jk")
+
+[node name="Stam-orb-1" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_ifhvy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -52,7 +52,7 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 2
 script = ExtResource("1_v0iea")
 
