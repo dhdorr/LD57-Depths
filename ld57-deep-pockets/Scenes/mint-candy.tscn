@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://lpiibsn5rwvf"]
+[gd_scene load_steps=3 format=3 uid="uid://02jhw050diwk"]
+
+[ext_resource type="Texture2D" uid="uid://d3n7jbmiypr0t" path="res://Assets/candy-sprites-sheet.png" id="1_3xff0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8f86"]
 radius = 25.0
@@ -23,3 +25,10 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "10"
 horizontal_alignment = 1
+
+[node name="Candy-sprites-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_3xff0")
+hframes = 2
+vframes = 2

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="LD57-Deep-Pockets"
-run/main_scene="uid://s6cm15bs64ts"
+run/main_scene="uid://dv4gpqcijehjb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalBus="*res://SignalBus.gd"
 
 [input]
 

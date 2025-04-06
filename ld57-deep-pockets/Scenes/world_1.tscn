@@ -1,48 +1,126 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4gpqcijehjb"]
+[gd_scene load_steps=16 format=3 uid="uid://dv4gpqcijehjb"]
 
+[ext_resource type="Texture2D" uid="uid://wondxk4btw60" path="res://Assets/pants-bg-1.png" id="1_12jk7"]
 [ext_resource type="PackedScene" uid="uid://rxkyxiyxkq0x" path="res://Scenes/player.tscn" id="1_brd3p"]
-[ext_resource type="Texture2D" uid="uid://dup44hugwh0c0" path="res://icon.svg" id="1_nsk3r"]
+[ext_resource type="PackedScene" uid="uid://bypm6yvavsty5" path="res://Scenes/long_pickable_object.tscn" id="4_12jk7"]
+[ext_resource type="PackedScene" uid="uid://b4j8wrucht84n" path="res://Scenes/goal.tscn" id="4_d4kua"]
+[ext_resource type="PackedScene" uid="uid://dm74d47wqabwv" path="res://Scenes/cherry-candy.tscn" id="6_h3pls"]
+[ext_resource type="PackedScene" uid="uid://cctv0g5q1ca2t" path="res://Scenes/kisses-candy.tscn" id="7_28bhr"]
+[ext_resource type="PackedScene" uid="uid://02jhw050diwk" path="res://Scenes/mint-candy.tscn" id="8_brl3g"]
+[ext_resource type="PackedScene" uid="uid://dxi6pptojmvw3" path="res://Scenes/smiles-candy.tscn" id="9_24lvx"]
+[ext_resource type="PackedScene" uid="uid://ddrwdqma1x5wf" path="res://Scenes/phone.tscn" id="10_28bhr"]
+[ext_resource type="Texture2D" uid="uid://cbvrucvhg6u27" path="res://Assets/arrow-1-Sheet.png" id="10_brl3g"]
+[ext_resource type="Script" uid="uid://1pwr81y7a83p" path="res://Scripts/arrow.gd" id="11_brl3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12jk7"]
+size = Vector2(20, 228)
+
+[sub_resource type="Animation" id="Animation_24lvx"]
+resource_name = "arrow"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_sm6r5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ise5x"]
+_data = {
+&"RESET": SubResource("Animation_sm6r5"),
+&"arrow": SubResource("Animation_24lvx")
+}
 
 [node name="World_1" type="Node2D"]
 
+[node name="Pants-bg-1" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(287, 400)
+scale = Vector2(16, 13.807)
+texture = ExtResource("1_12jk7")
+
 [node name="Player" parent="." instance=ExtResource("1_brd3p")]
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-198, 209)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(250, -183)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-267, -521)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(251, -767)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon5" type="Sprite2D" parent="."]
-position = Vector2(216, 492)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon6" type="Sprite2D" parent="."]
-position = Vector2(-254, 835)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon7" type="Sprite2D" parent="."]
-position = Vector2(-849, -164)
-texture = ExtResource("1_nsk3r")
-
-[node name="Icon8" type="Sprite2D" parent="."]
-position = Vector2(958, 220)
-texture = ExtResource("1_nsk3r")
+z_index = 100
+position = Vector2(0, -169)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1387, -1068, -1175, -1056, 1381, -1239, 1381, 1811, -1163, 1795, -1175, -1045, -1383, -1053, -1383, 1921, 1628, 1917, 1594, -1364, -1395, -1341)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1175, -1060, -1380, -1068, -1399, -1349, 1594, -1364, 1628, 1913, -1406, 1917, -1391, -1034, -1175, -1030, -1159, 1784, 1381, 1807, 1374, -1216)
+polygon = PackedVector2Array(-640, -430, -747, -333, -748, -932, 1421, -932, 1437, 1391, -767, 1397, -746, -144, -468, 59, -464, 990, -229, 1257, 175, 1259, 430, 1031, 471, -417)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+color = Color(0.105167, 0.111468, 0.228985, 1)
+polygon = PackedVector2Array(-748, -334, -652, -426, 474, -424, 431, 1028, 164, 1271, -216, 1267, -459, 1000, -465, 59, -752, -153, -762, 1394, 1435, 1387, 1423, -931, -748, -931)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("4_12jk7")]
+position = Vector2(-51, 1095)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("4_12jk7")]
+position = Vector2(-92, -387)
+
+[node name="Goal" parent="." instance=ExtResource("4_d4kua")]
+position = Vector2(-1025, -235)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-772, -228)
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_12jk7")
+
+[node name="RigidBody2D5" parent="." instance=ExtResource("6_h3pls")]
+position = Vector2(-182, -156)
+
+[node name="RigidBody2D6" parent="." instance=ExtResource("7_28bhr")]
+position = Vector2(219, 9)
+
+[node name="RigidBody2D7" parent="." groups=["token"] instance=ExtResource("8_brl3g")]
+position = Vector2(-73, 392)
+
+[node name="RigidBody2D8" parent="." instance=ExtResource("9_24lvx")]
+position = Vector2(129, -252)
+
+[node name="RigidBody2D9" parent="." instance=ExtResource("10_28bhr")]
+position = Vector2(227, 615)
+
+[node name="Arrow-1-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 297)
+scale = Vector2(5, 5)
+texture = ExtResource("10_brl3g")
+hframes = 5
+script = ExtResource("11_brl3g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow-1-sheet"]
+libraries = {
+&"": SubResource("AnimationLibrary_ise5x")
+}
+autoplay = "arrow"
