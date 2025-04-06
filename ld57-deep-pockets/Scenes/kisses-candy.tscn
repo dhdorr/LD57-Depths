@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cctv0g5q1ca2t"]
+[gd_scene load_steps=4 format=3 uid="uid://cctv0g5q1ca2t"]
 
 [ext_resource type="Texture2D" uid="uid://d3n7jbmiypr0t" path="res://Assets/candy-sprites-sheet.png" id="1_260kc"]
+[ext_resource type="Script" uid="uid://brdck75y8iswu" path="res://Scripts/candy.gd" id="1_ku3mi"]
+[ext_resource type="AudioStream" uid="uid://cxmt3onbr0j0j" path="res://Assets/Shoe Step Wood Hard B.wav" id="3_wxqgc"]
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["obj"]]
 mass = 250.0
 contact_monitor = true
 max_contacts_reported = 4
+script = ExtResource("1_ku3mi")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-1, -25, 22, -13, 22, 11, 4, 25, -21, 13, -22, -13)
@@ -30,3 +33,9 @@ frame = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-29, 39, 29, 39, 36, 15, -2, -35, -19, -40, -10, -25, -36, 18)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wxqgc")
+volume_db = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

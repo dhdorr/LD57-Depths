@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dv4gpqcijehjb"]
+[gd_scene load_steps=20 format=3 uid="uid://dv4gpqcijehjb"]
 
 [ext_resource type="Texture2D" uid="uid://wondxk4btw60" path="res://Assets/pants-bg-1.png" id="1_12jk7"]
 [ext_resource type="PackedScene" uid="uid://rxkyxiyxkq0x" path="res://Scenes/player.tscn" id="1_brd3p"]
@@ -14,9 +14,25 @@
 [ext_resource type="Script" uid="uid://1pwr81y7a83p" path="res://Scripts/arrow.gd" id="11_brl3g"]
 [ext_resource type="PackedScene" uid="uid://d3ntlv3qe8q2h" path="res://Scenes/stamina_orb.tscn" id="12_24lvx"]
 [ext_resource type="PackedScene" uid="uid://cn6bmdonjir36" path="res://Scenes/start_screen.tscn" id="14_sg8p1"]
+[ext_resource type="AudioStream" uid="uid://c8rct60yb0ui3" path="res://Assets/Funk Move Your Feet Cut 30.wav" id="15_sg8p1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12jk7"]
 size = Vector2(20, 228)
+
+[sub_resource type="Animation" id="Animation_sm6r5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_24lvx"]
 resource_name = "arrow"
@@ -35,21 +51,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_sm6r5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ise5x"]
 _data = {
 &"RESET": SubResource("Animation_sm6r5"),
@@ -65,6 +66,21 @@ texture_filter = 1
 position = Vector2(287, 400)
 scale = Vector2(16, 13.807)
 texture = ExtResource("1_12jk7")
+
+[node name="Node" type="Node" parent="Pants-bg-1"]
+
+[node name="Label" type="Label" parent="Pants-bg-1/Node"]
+offset_left = -261.0
+offset_top = -256.0
+offset_right = 269.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(0.135711, 0.201347, 0.337516, 1)
+theme_override_font_sizes/font_size = 32
+text = "Use the Mouse to move your hand
+
+
+
+Hold Left Click to grab"
 
 [node name="Player" parent="." instance=ExtResource("1_brd3p")]
 visible = false
@@ -137,3 +153,8 @@ position = Vector2(0, 507)
 
 [node name="StartScreen" parent="." instance=ExtResource("14_sg8p1")]
 position = Vector2(-576, -482)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_sg8p1")
+volume_db = -10.0
+autoplay = true

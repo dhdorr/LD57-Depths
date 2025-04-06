@@ -1,0 +1,517 @@
+[gd_scene load_steps=23 format=3 uid="uid://tbbi66up4lwh"]
+
+[ext_resource type="AudioStream" uid="uid://birt5dgx4q862" path="res://Assets/Funk Please Stay Cut 30.wav" id="1_xof06"]
+[ext_resource type="Script" uid="uid://dv8tvpph3tm35" path="res://Scripts/home_screen.gd" id="1_yufik"]
+[ext_resource type="Texture2D" uid="uid://wondxk4btw60" path="res://Assets/pants-bg-1.png" id="2_d6d8u"]
+[ext_resource type="Texture2D" uid="uid://3slr1fgogusw" path="res://Assets/pocket-2.png" id="3_db1cy"]
+[ext_resource type="Texture2D" uid="uid://qltjl5aci02d" path="res://Assets/hand-sprite-1-Sheet.png" id="4_u8qlv"]
+[ext_resource type="Texture2D" uid="uid://d3n7jbmiypr0t" path="res://Assets/candy-sprites-sheet.png" id="5_ianbu"]
+[ext_resource type="Texture2D" uid="uid://ckvlmdmjn2r65" path="res://Assets/phone-sprite.png" id="6_hfiwk"]
+[ext_resource type="AudioStream" uid="uid://dysdddfvnxdp3" path="res://Assets/Game Start.wav" id="8_yh8n3"]
+
+[sub_resource type="Animation" id="Animation_yufik"]
+resource_name = "hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(665, 146), Vector2(665, 130), Vector2(665, 120), Vector2(665, 146)]
+}
+
+[sub_resource type="Animation" id="Animation_ianbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(671, 86)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfiwk"]
+_data = {
+&"RESET": SubResource("Animation_ianbu"),
+&"hover": SubResource("Animation_yufik")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfiwk"]
+atlas = ExtResource("5_ianbu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ianbu"]
+atlas = ExtResource("5_ianbu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh8n3"]
+atlas = ExtResource("5_ianbu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajhh6"]
+atlas = ExtResource("5_ianbu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="Animation" id="Animation_db1cy"]
+resource_name = "wiggle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.13333, 2.43333, 2.74333, 3.03333, 3.34333, 3.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.10472, -0.10472, 0.10472, -0.10472, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u8qlv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yufik"]
+_data = {
+&"RESET": SubResource("Animation_u8qlv"),
+&"wiggle": SubResource("Animation_db1cy")
+}
+
+[sub_resource type="Animation" id="Animation_hfiwk"]
+resource_name = "particles"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yh8n3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ajhh6"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.0768358, 0.0768358, 0.0768358, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajhh6"]
+_data = {
+&"RESET": SubResource("Animation_yh8n3"),
+&"fade": SubResource("Animation_ajhh6"),
+&"particles": SubResource("Animation_hfiwk")
+}
+
+[node name="HomeScreen" type="Node2D"]
+script = ExtResource("1_yufik")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_xof06")
+volume_db = -10.0
+autoplay = true
+
+[node name="Pants-bg-1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(588, 111)
+scale = Vector2(10, 10)
+texture = ExtResource("2_d6d8u")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -68.0
+offset_top = 149.0
+offset_right = 530.0
+offset_bottom = 286.0
+rotation = -0.289997
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Let Me Check
+ My Pockets!"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Hand-sprite-1-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 86)
+scale = Vector2(8, 8)
+texture = ExtResource("4_u8qlv")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand-sprite-1-sheet"]
+libraries = {
+&"": SubResource("AnimationLibrary_hfiwk")
+}
+autoplay = "hover"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 341.445)
+emitting = false
+amount = 3
+texture = SubResource("AtlasTexture_hfiwk")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.35
+direction = Vector2(0, -1)
+initial_velocity_min = 444.45
+initial_velocity_max = 979.81
+linear_accel_min = 52.53
+linear_accel_max = 100.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 341.445)
+emitting = false
+amount = 3
+texture = SubResource("AtlasTexture_ianbu")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.35
+direction = Vector2(0, -1)
+initial_velocity_min = 444.45
+initial_velocity_max = 979.81
+linear_accel_min = 52.53
+linear_accel_max = 100.0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 341.445)
+emitting = false
+amount = 2
+texture = SubResource("AtlasTexture_yh8n3")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.35
+direction = Vector2(0, -1)
+initial_velocity_min = 444.45
+initial_velocity_max = 979.81
+linear_accel_min = 52.53
+linear_accel_max = 100.0
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 341.445)
+emitting = false
+amount = 3
+texture = SubResource("AtlasTexture_ajhh6")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.35
+direction = Vector2(0, -1)
+initial_velocity_min = 444.45
+initial_velocity_max = 979.81
+linear_accel_min = 52.53
+linear_accel_max = 100.0
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(671, 341.445)
+emitting = false
+amount = 2
+texture = ExtResource("6_hfiwk")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.35
+direction = Vector2(0, -1)
+initial_velocity_min = 515.16
+initial_velocity_max = 1000.0
+linear_accel_min = 62.63
+linear_accel_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+
+[node name="Pocket-2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(670, 490)
+scale = Vector2(6, 6)
+texture = ExtResource("3_db1cy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pocket-2"]
+libraries = {
+&"": SubResource("AnimationLibrary_yufik")
+}
+autoplay = "wiggle"
+
+[node name="Node" type="Node" parent="Pocket-2"]
+
+[node name="TextureButton" type="TextureButton" parent="Pocket-2/Node"]
+offset_left = 552.0
+offset_top = 393.0
+offset_right = 805.0
+offset_bottom = 521.0
+texture_normal = ExtResource("2_d6d8u")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Pocket-2/Node/TextureButton"]
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 233.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 64
+text = "Level 1"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pocket-2/Node/TextureButton"]
+stream = ExtResource("8_yh8n3")
+
+[node name="Candy-sprites-sheet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(212.136, 460)
+rotation = -0.529891
+scale = Vector2(2, 2)
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ajhh6")
+}
+autoplay = "particles"
+
+[node name="Candy-sprites-sheet2" type="Sprite2D" parent="."]
+position = Vector2(244.136, 369)
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+
+[node name="Candy-sprites-sheet3" type="Sprite2D" parent="."]
+position = Vector2(233.136, 393)
+rotation = -0.454789
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+
+[node name="Candy-sprites-sheet4" type="Sprite2D" parent="."]
+position = Vector2(273.136, 395)
+rotation = 0.378146
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+
+[node name="Candy-sprites-sheet5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(325.136, 570)
+rotation = 0.119889
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Candy-sprites-sheet10" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(334.136, 585)
+rotation = 0.119889
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Candy-sprites-sheet6" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(363.136, 575)
+rotation = 1.30974
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Candy-sprites-sheet7" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(295.136, 579)
+rotation = -0.114634
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Candy-sprites-sheet8" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(356.136, 479)
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="Candy-sprites-sheet9" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(380.136, 501)
+rotation = 0.443527
+texture = ExtResource("5_ianbu")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="Phone-sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(167.136, 565)
+rotation = -1.30975
+scale = Vector2(3, 3)
+texture = ExtResource("6_hfiwk")
+
+[connection signal="pressed" from="Pocket-2/Node/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

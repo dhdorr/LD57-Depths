@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1cinbvama2kx"]
+[gd_scene load_steps=12 format=3 uid="uid://d1cinbvama2kx"]
 
 [ext_resource type="Script" uid="uid://ddjn4jbqo4lib" path="res://Scripts/ui.gd" id="1_jxero"]
+[ext_resource type="AudioStream" uid="uid://be53dlr8ifghd" path="res://Assets/pop-1.wav" id="2_qdvrb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxero"]
 bg_color = Color(0.0844241, 0.146941, 0.203662, 1)
@@ -25,21 +26,6 @@ gradient = SubResource("Gradient_qdvrb")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="Animation" id="Animation_jxero"]
-resource_name = "wrong-item"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_qdvrb"]
 length = 0.001
 tracks/0/type = "value"
@@ -55,6 +41,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jxero"]
+resource_name = "wrong-item"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nf4gj"]
 _data = {
 &"RESET": SubResource("Animation_qdvrb"),
@@ -68,24 +69,25 @@ script = ExtResource("1_jxero")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 126.0
-offset_top = 40.0
-offset_right = 376.0
-offset_bottom = 67.0
+offset_left = 192.0
+offset_top = 54.0
+offset_right = 442.0
+offset_bottom = 81.0
 theme_override_styles/background = SubResource("StyleBoxFlat_jxero")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qdvrb")
 value = 100.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 958.0
-offset_top = 287.0
-offset_right = 1120.0
-offset_bottom = 345.0
+offset_left = 908.0
+offset_top = 270.0
+offset_right = 1124.0
+offset_bottom = 372.0
 metadata/_edit_group_ = true
 
 [node name="ObjectiveTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Objective:"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
@@ -96,22 +98,25 @@ layout_mode = 2
 
 [node name="ObjLabel" type="Label" parent="VBoxContainer/ObjList"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Grab the Mint"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 951.0
-offset_top = 28.0
-offset_right = 1044.0
-offset_bottom = 68.0
+offset_left = 904.0
+offset_top = 41.0
+offset_right = 1083.0
+offset_bottom = 86.0
 metadata/_edit_group_ = true
 
 [node name="ScoreTitle" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Score: "
 
 [node name="Score" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "0000"
 
 [node name="Label" type="Label" parent="."]
@@ -120,12 +125,13 @@ offset_left = 52.0
 offset_top = 40.0
 offset_right = 120.0
 offset_bottom = 63.0
+theme_override_font_sizes/font_size = 32
 text = "Stamina "
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(922, 383)
+position = Vector2(865, 400)
 emitting = false
-amount = 12
+amount = 24
 one_shot = true
 direction = Vector2(0, -1)
 initial_velocity_min = 350.0
@@ -138,9 +144,9 @@ hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_nf4gj")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(267, 383)
+position = Vector2(310, 400)
 emitting = false
-amount = 12
+amount = 24
 one_shot = true
 direction = Vector2(0, -1)
 initial_velocity_min = 350.0
@@ -163,3 +169,7 @@ texture = SubResource("GradientTexture2D_nf4gj")
 libraries = {
 &"": SubResource("AnimationLibrary_nf4gj")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qdvrb")
+volume_db = 3.0

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm74d47wqabwv"]
+[gd_scene load_steps=5 format=3 uid="uid://dm74d47wqabwv"]
 
 [ext_resource type="Texture2D" uid="uid://d3n7jbmiypr0t" path="res://Assets/candy-sprites-sheet.png" id="1_berju"]
+[ext_resource type="Script" uid="uid://brdck75y8iswu" path="res://Scripts/candy.gd" id="1_ot232"]
+[ext_resource type="AudioStream" uid="uid://cxmt3onbr0j0j" path="res://Assets/Shoe Step Wood Hard B.wav" id="3_dkvyg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8f86"]
 radius = 25.0
@@ -9,6 +11,7 @@ radius = 25.0
 mass = 200.0
 contact_monitor = true
 max_contacts_reported = 4
+script = ExtResource("1_ot232")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 10)
@@ -39,3 +42,9 @@ texture = ExtResource("1_berju")
 hframes = 2
 vframes = 2
 frame = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dkvyg")
+volume_db = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

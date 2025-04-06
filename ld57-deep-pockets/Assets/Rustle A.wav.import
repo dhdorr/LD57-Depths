@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbn6vk1tq6a8w"
+path="res://.godot/imported/Rustle A.wav-76032d1a1fc450cc86fc961bef0265fb.sample"
+
+[deps]
+
+source_file="res://Assets/Rustle A.wav"
+dest_files=["res://.godot/imported/Rustle A.wav-76032d1a1fc450cc86fc961bef0265fb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

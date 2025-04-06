@@ -5,6 +5,9 @@ class_name UI extends Control
 @onready var cpu_particles_2d_2: CPUParticles2D = $CPUParticles2D2
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var animation_player: AnimationPlayer = $TextureRect/AnimationPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+#const SETTINGS_MENU = preload("res://Scenes/settings_menu.tscn")
+
 
 var score_val := 0
 
@@ -13,6 +16,13 @@ func _ready() -> void:
 	SignalBus.do_confetti.connect(DoConfetti)
 	SignalBus.do_warning.connect(DoWarning)
 	SignalBus.restore_stamina.connect(RestoreStamina)
+	SignalBus.adjust_sfx_volume.connect(AdjustSFX)
+	#SignalBus.open_settings.connect(OpenSettings)
+
+#func OpenSettings() -> void:
+	#var menu := SETTINGS_MENU.instantiate()
+	#add_child(menu)
+	#menu.top_level = true
 
 func Consume_Stamina(weight: float, mass: float) -> void:
 	var final_weight := mass / 100
@@ -27,9 +37,13 @@ func UpdateScore(value : int) -> void:
 func DoConfetti() -> void:
 	cpu_particles_2d_2.emitting = true
 	cpu_particles_2d.emitting = true
+	audio_stream_player_2d.play(0.8)
 
 func DoWarning() -> void:
 	animation_player.play("wrong-item")
 
 func RestoreStamina(value: int) -> void:
 	progress_bar.value += value
+
+func AdjustSFX(value: float) -> void:
+	audio_stream_player_2d.volume_db = (value - 100.0) / 5.0

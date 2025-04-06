@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m8j8i2a64ofi"
+path="res://.godot/imported/Dice Roll Velvet 004.wav-9d64c242b80c799b9798c106dd862434.sample"
+
+[deps]
+
+source_file="res://Assets/Dice Roll Velvet 004.wav"
+dest_files=["res://.godot/imported/Dice Roll Velvet 004.wav-9d64c242b80c799b9798c106dd862434.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

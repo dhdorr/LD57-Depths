@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddrwdqma1x5wf"]
+[gd_scene load_steps=5 format=3 uid="uid://ddrwdqma1x5wf"]
 
+[ext_resource type="Script" uid="uid://brdck75y8iswu" path="res://Scripts/candy.gd" id="1_m5ye2"]
 [ext_resource type="Texture2D" uid="uid://ckvlmdmjn2r65" path="res://Assets/phone-sprite.png" id="1_oju8d"]
+[ext_resource type="AudioStream" uid="uid://cxmt3onbr0j0j" path="res://Assets/Shoe Step Wood Hard B.wav" id="3_6hkyp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knwvw"]
 radius = 129.0
@@ -10,6 +12,7 @@ height = 512.0
 mass = 1000.0
 contact_monitor = true
 max_contacts_reported = 4
+script = ExtResource("1_m5ye2")
 
 [node name="Phone-sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -28,3 +31,9 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "10"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6hkyp")
+volume_db = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

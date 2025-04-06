@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxmt3onbr0j0j"
+path="res://.godot/imported/Shoe Step Wood Hard B.wav-4c51eed1cfdb11aded58046482293e17.sample"
+
+[deps]
+
+source_file="res://Assets/Shoe Step Wood Hard B.wav"
+dest_files=["res://.godot/imported/Shoe Step Wood Hard B.wav-4c51eed1cfdb11aded58046482293e17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
