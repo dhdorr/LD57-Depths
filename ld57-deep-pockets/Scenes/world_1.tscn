@@ -127,6 +127,10 @@ position = Vector2(219, 9)
 position = Vector2(-221, 1153)
 mass = 250.0
 
+[node name="RigidBody2D10" parent="." groups=["token"] instance=ExtResource("8_brl3g")]
+position = Vector2(230, 464)
+mass = 250.0
+
 [node name="RigidBody2D8" parent="." instance=ExtResource("9_24lvx")]
 position = Vector2(129, -252)
 

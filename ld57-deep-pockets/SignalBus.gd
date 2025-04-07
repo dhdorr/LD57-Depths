@@ -11,3 +11,5 @@ signal adjust_music_volume(value: float)
 signal adjust_sfx_volume(value: float)
 signal resume_game
 signal open_settings
+signal update_objective
+signal make_token(name: String)

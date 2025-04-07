@@ -15,11 +15,12 @@ func AdjustSFX(value: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var score := 0
 	if body.is_in_group("token"):
-		score = 1000000
+		score = randi_range(1000, 5000)
 		print("you did it!")
 		SignalBus.do_confetti.emit()
 		audio_stream_player_2d.stream = good_cheer
 		audio_stream_player_2d.play()
+		SignalBus.update_objective.emit()
 	else:
 		score = randi_range(-1000, -10000)
 		SignalBus.do_warning.emit()

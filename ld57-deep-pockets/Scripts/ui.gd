@@ -7,8 +7,9 @@ class_name UI extends Control
 @onready var animation_player: AnimationPlayer = $TextureRect/AnimationPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 #const SETTINGS_MENU = preload("res://Scenes/settings_menu.tscn")
+@onready var obj_label: Label = $VBoxContainer/ObjList/ObjLabel
 
-
+var objectives := ["Grab the Mint", "Grab the Smiley Pin", "Grab the Kisses", "Grab the Cherries"]
 var score_val := 0
 
 func _ready() -> void:
@@ -17,12 +18,20 @@ func _ready() -> void:
 	SignalBus.do_warning.connect(DoWarning)
 	SignalBus.restore_stamina.connect(RestoreStamina)
 	SignalBus.adjust_sfx_volume.connect(AdjustSFX)
+	SignalBus.update_objective.connect(UpdateObjective)
 	#SignalBus.open_settings.connect(OpenSettings)
 
-#func OpenSettings() -> void:
-	#var menu := SETTINGS_MENU.instantiate()
-	#add_child(menu)
-	#menu.top_level = true
+func UpdateObjective() -> void:
+	var obj : String = objectives.pick_random()
+	obj_label.text = obj
+	if obj == "Grab the Mint":
+		SignalBus.make_token.emit("mint")
+	elif obj == "Grab the Smiley Pin":
+		SignalBus.make_token.emit("smile")
+	elif obj == "Grab the Kisses":
+		SignalBus.make_token.emit("kiss")
+	else:
+		SignalBus.make_token.emit("cherry")
 
 func Consume_Stamina(weight: float, mass: float) -> void:
 	var final_weight := mass / 100

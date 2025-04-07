@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://brdck75y8iswu" path="res://Scripts/candy.gd" id="1_ku3mi"]
 [ext_resource type="AudioStream" uid="uid://cxmt3onbr0j0j" path="res://Assets/Shoe Step Wood Hard B.wav" id="3_wxqgc"]
 
-[node name="RigidBody2D" type="RigidBody2D" groups=["obj"]]
+[node name="RigidBody2D" type="RigidBody2D" groups=["kiss", "obj"]]
 mass = 250.0
 contact_monitor = true
 max_contacts_reported = 4
